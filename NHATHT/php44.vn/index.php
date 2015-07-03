@@ -5,6 +5,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
 </head>
+<body style="background: url(http://lienminh.garena.vn/images/banners/bg-ekko.jpg)">
 <body>
 	<div class="container">
 		<div class="navbar navbar-default">
@@ -27,7 +28,7 @@
 				<li><!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
 <span class="glyphicon glyphicon-log-in"> </span>
-  Đăn Nhập
+  Đăng Nhập
 </button>
 
 <!-- Modal -->

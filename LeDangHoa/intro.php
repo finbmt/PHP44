@@ -1,6 +1,6 @@
 ﻿<?php
 	//Statistic variables
-	$age=30;
+	global $age=30;
 	function prinarr(){
 		static $age;
 		$age=$age + 1;
@@ -138,13 +138,14 @@
 	$result_array = array_intersect_assoc($array1, $array2);
 	print_r($result_array);
 
-	echo "<br/>";
-	echo "<br/>";
 	
+	echo "<br/>";
+	echo "<br/>";
+	//--------------------------------------------------------------------------
 	echo "Bài Tập Về Nhà";
 	echo "<br/>";
 	echo "Cho mảng $number = array(1,2,3,4,5,6,7,8,9,10).<br/>";
-	//-----------------------
+	//------------------------------
 	echo "a.Tổng của mảng: <br/>";
 	$number=array(1,2,3,4,5,6,7,8,9,10);
 	$Tong=0;
@@ -152,7 +153,7 @@
 			$Tong+=$number[$i];
 		}
 	echo $Tong."<br/>";
-	//------------------------------//
+	//------------------------------
     $smallest = $number[0];
     $largetst = $number[0];
 	for($i=0; $i<10; $i++){
@@ -168,13 +169,13 @@
 	echo "c.Xác định phần tử lớn nhất trong mảng:<br/>";
 	echo $largetst."<br/>";
 	
-	//------------------------------------//
+	//------------------------------
 	echo "d.Loại bỏ phần tử cuối cùng của mảng trên<br/>";
 	for($i=0;$i<count($number)-1;$i++){
 			echo $number[$i]." ";
 	}
 	echo "<br/>";
-	//------------------------------------//
+	//------------------------------
 	echo "e. Loại bỏ phần tử đầu tiên của mảng trên <br/> (dùng lệnh var_dump để kiểm tra dữ liệu sau khi loại bỏ)
 	<br/>";
 	array_splice($number,0,1);
@@ -182,4 +183,5 @@
 			var_dump($number[$i]);
 	}
 	echo '</br>';
+	
 ?>

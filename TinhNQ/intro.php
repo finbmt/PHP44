@@ -1,7 +1,10 @@
-
+namefuntion($a);
 <!-- comment -->
 <?php
-	$a = 1;
-	$a = $a . "avvvv";
-	echo $a;
+	
+	function namefuntion ($a, $b = 'aaa')
+	{
+		echo $a;
+		echo $b;
+	}
 ?>

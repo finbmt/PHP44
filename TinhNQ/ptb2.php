@@ -1,3 +1,23 @@
+<?php
+	require_once "ptb2_giai.php";
+	
+	if($_POST["btnGiai"])
+	{
+		//b1 lấy giá trị
+		$a = $_POST["txtA"];
+		$b = $_POST["txtB"];
+		$c = $_POST["txtC"];
+		$ketqua = 0;
+		if($a != 0)
+		{
+			$ketqua = giai_ptb2($a, $b, $c);
+		}
+		else
+		{
+			$ketqua = giai_ptb1($b, $c);
+		}
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +33,6 @@
 			<a class="navbar-brand logo-navbar" href="#">
 				<img class="logo" src="http://www.norabrowndesign.com/portfolio/logos/sds/sleeping-dog-logo-2.gif"/>
 			</a>
-			
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="#">Trang chủ</a></li>
@@ -22,7 +41,6 @@
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li>
-				<!-- Button trigger modal -->
 				<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
 				  Đăng nhập
 				</button>
@@ -63,78 +81,42 @@
 			
 			<!-- nội dung-->
 			<div class="col-md-9">
-				<h1>Quản lý người dùng</h1>
+				<h1>Giải phương bậc 2 : 
+				Ax^2 + Bx + C = 0</h1>
 				<hr>
-				<p class="text-right">
-					<a type="button" class="btn btn-success" href="form.html">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-						Thêm mới
-					</a>
-				</p>
-				<table class="table table-bordered">
-					<thead>
-						<th>Mã</th>
-						<th>Tên Truy Cập</th>
-						<th>Mật Khẩu</th>
-						<th>Họ Tên</th>
-						<th>#</th>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Tinhnq</td>
-							<td>1234676</td>
-							<td>Ngô Quang Tính</td>
-							<td>
-								<button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Sửa">
-									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa">
-									<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>Abc</td>
-							<td>77777</td>
-							<td>Nguyễn Văn A</td>
-							<td>
-								<button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Sửa">
-									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa">
-									<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>admin</td>
-							<td>1234676</td>
-							<td>Lê Thị B</td>
-							<td>
-								<button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Sửa">
-									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa">
-									<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-								</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class="btn-group" role="group" aria-label="...">
-				  <button type="button" class="btn btn-default">1</button>
-				  <button type="button" class="btn btn-default">2</button>
-				  <button type="button" class="btn btn-default">3</button>
-				</div>
-				<div class="text-right">
-					<button type="button" class="btn btn-success ">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-						Thêm mới
-					</button>
-				</div>
+				<form class="form-horizontal" action="ptb2.php" method="POST">
+				  <div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">A</label>
+					<div class="col-sm-10">
+					  <input type="text" class="form-control" name="txtA" placeholder="A">
+					</div>
+				  </div>
+				  <div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">B</label>
+					<div class="col-sm-10">
+					  <input type="text" class="form-control" name="txtB" placeholder="B">
+					</div>
+				  </div>
+				  <div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">C</label>
+					<div class="col-sm-10">
+					  <input type="text" class="form-control" name="txtC" placeholder="C">
+					</div>
+				  </div>
+				  <div class="form-group">
+					<label class="col-sm-2 control-label">Kết quả  =</label>
+					<div class="col-sm-10">
+					  <input type="text" class="form-control" value="<?php echo $ketqua; ?>">
+					</div>
+				  </div>
+				  <hr>
+				  <div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<input type="submit" class="btn btn-success" name="btnGiai" value="Giải">
+						<input type="reset" class="btn btn-default" name="btnGiai" value="Hủy bỏ">
+					</div>
+				  </div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -166,7 +148,6 @@
     </div>
   </div>
 </div>
-
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script>

@@ -7,13 +7,13 @@
 </head>
 <body style="background: url(http://lienminh.garena.vn/images/banners/bg-ekko.jpg)">
 <body>
-	<div class="container">
 		<div class="navbar navbar-default">
 		<div class="navbar-header">
 			<a class="navbar-brand logo-navbar" href="#">
         <img class="logo" src="http://www.logodesignconsultant.com/images/category_based_logos/downtown-dogs-logo.gif">      </a>
 		
   </div>
+    <div class="container-fluid">
 	   <ul class="nav navbar-nav">
 				<li class="active"><a href="#">
 				<span class="glyphicon glyphicon-home"> </span>
@@ -55,7 +55,6 @@
       </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
@@ -89,31 +88,51 @@
 					  <span class="glyphicon glyphicon-arrow-right"> </span>
 					  MÓN CHIÊN</a>
 				</div>
+			</div>
+				<div class="col-md-3">
+					<div class="list-group">
+					  <a href="#" class="list-group-item active">
+						NGƯỜI DÙNG
+					  </a>
+					  <a href="themmoinguoidung.php" class="list-group-item">
+					  THÊM MỚI NGƯỜI DÙNG</a>
+					  <a href="#" class="list-group-item">
+					  QUẢN LÝ NGƯỜI DÙNG</a>
+					  <a href="#" class="list-group-item">
+					  HỔ TRỢ KHÁCH HÀNG</a>
+					 </div>
+				</div>
+				<div class="col-md-3">
+					<div class="list-group">
+					  <a href="#" class="list-group-item active">
+						HÀNG HÓA
+					  </a>
+					  <a href="#" class="list-group-item">
+					  ĐẶT HÀNG HÓA</a>
+					  <a href="#" class="list-group-item">
+					  CẬP NHẬT HÀNG HÓA</a>
+					 </div>
+				</div>
+				<div class="col-md-3">
+					<div class="list-group">
+					  <a href="#" class="list-group-item active">
+						KHÁCH HÀNG
+					  </a>
+					  <a href="#" class="list-group-item">
+					  CẬP NHẬT THÔNG TIN KHÁCH HÀNG</a>
+					  <a href="#" class="list-group-item">
+					  QUẢN LÝ THÔNG TIN KHÁCH HÀNG</a>
+					 </div>
+				</div>
+			</div>
+		</div>		
+				
 	</ul>
 </div>
 		  <!-- nội dung -->
-				   <div class="col-md-9"><table class="table table-bordered">
-					  <thead>
-						<tr>
-							<th>NHAT</th>
-							<th>NHAT</th>
-							<th>NHAT</th>
-							<th>NHAT</th>
-						</tr>
-					  </thead>
-					  <tbody>
-						<tr>
-							<td>NHAT</td>
-							<td>NHAT</td>
-							<td>NHAT</td>
-							<td>NHAT</td>
-						</tr>
-					  </tbody>
-					</table>
- </div>
 		</div>
 	</div>
-</div>
+		</div>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script></body>
 </html>

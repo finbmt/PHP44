@@ -1,37 +1,22 @@
 ﻿<?php
-	if($_POST["btnGiai"])
-	{ 
-		$a = $_POST["txtA"];
-		$b = $_POST["txtB"];
-		$c = $_POST["txtC"];
-		
-		//b2 tính delta:
-		$delta = $b*$b - 4*$a*$c;
-		
-		//b3 tính kết quả 
-		$ketqua = "";
-			if ($delta <0)
-			{
-			// 3.1 nếu delta< 0
-			$ketqua = "phương trình vô nghiệm";
-			}
-			elseif ($delta==0)
-			{
-			// 3.2 nếu delta= 0
-			$x = (-$b)/(2*$a);
-			$ketqua = "x1 = x2 = $x";
-			}
-			else 
-			{
-			// 3.3 nếu delta> 0
-			$x1 = ((-$b)-sqrt ($delta)) / (2*$a);
-			$x2 = ((-$b)+sqrt ($delta)) / (2*$a);
-			$ketqua = "x1 = $x1 ; X2 = $x2";
-			}
+
+if ($_POST["btnGiai"])
+{
+  	include_once "ptb2_giai.php";
+		$a = $_POST ["txtA"];
+		$b = $_POST ["txtB"];
+		$c = $_POST ["txtC"];
+	if (a!=o)
+	{
+		$ketqua = giaiptb2($a, $b, $c);
 	}
-	echo $a;
-	echo $b;
-	echo $c;
+
+	else
+	{
+	 	 $ketqua = giaiptb1 ($b, $c);
+	}
+		
+}
 ?>
 <!DOCTYPE html>
 <html>

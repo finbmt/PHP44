@@ -1,36 +1,25 @@
 <?php
+
+	require_once "ptb2_giai.php";
+	
 	if($_POST["btnGiai"])
 	{
-		//lấy gái trị
-		$a=$_POST["txtA"];
-		$b=$_POST["txtB"];
-		$c=$_POST["txtC"];
-		
-		//b2 tính detal
-		$detal = $b*$b - 2*$a*$c;
-		//b3 tính kết quả
-		$ketqua="";
-		if($detal<0)
+		//b1 lấy giá trị
+		$a = $_POST["txtA"];
+		$b = $_POST["txtB"];
+		$c = $_POST["txtC"];
+		$ketqua = 0;
+		if($a != 0)
 		{
-		//3.1 nếu detal < 0
-		$ketqua="phương trình vô nghiệm";
-		}elseif ($detal==0)
-		{
-		//3.2 nếu detal = 0
-		$x =(-$b)/(2*$a);
-		$ketqua = "x1=x2=$x";
-		}else
-		{
-		
-		//3.3 nếu detal > 0
-		$x1 =((-$b)-sqrt($detal))/(2*$a);
-		$x2 =((-$b)+sqrt($detal))/(2*$a);
-		$ketqua="x1=$x1;x2=$x2";
-		
+			$ketqua = giai_ptb2($a, $b, $c);
 		}
-		
+		else
+		{
+			$ketqua = giai_ptb1($b, $c);
+		}
 	}
-	
+?>
+			
 	
 ?>
 <!DOCTYPE html>

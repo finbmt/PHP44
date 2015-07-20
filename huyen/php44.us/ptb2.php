@@ -20,8 +20,7 @@
 	}
 ?>
 			
-	
-?>
+
 <!DOCTYPE html>
 <html>
 <head>

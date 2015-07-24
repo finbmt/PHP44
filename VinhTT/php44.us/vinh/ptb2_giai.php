@@ -14,14 +14,14 @@ function giaiptb2($a, $b, $c)
     //3.2...Nếu delta =0
     elseif ($delta == 0) {
         $x      = (-$b) / (2 * $a);
-        $ketqua = "x1=x2=$x";
+        $ketqua = "X1=X2=$x";
     }
     //3.3...Nếu delta >0
     else
     {
         $x1     = ((-$b) - sqrt($delta)) / (2 * $a);
         $x2     = ((-$b) + sqrt($delta)) / (2 * $a);
-        $ketqua = "x1=$x1; x2=$x2";
+        $ketqua = "X1= $x1  ;  X2= $x2";
     }
     
     return $ketqua;
@@ -30,7 +30,7 @@ function giaiptb2($a, $b, $c)
 function giaiptb1($b, $c)
 {
     $x      = (-$c) / $b;
-    $ketqua = "x=$x";
+    $ketqua = "X=$x";
     return $ketqua;
 }
 

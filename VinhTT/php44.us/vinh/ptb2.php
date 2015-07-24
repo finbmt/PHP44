@@ -1,11 +1,33 @@
 ﻿<?php
 
-if ($_POST["btnGiai"])
+if (isset($_POST["btnGiai"]))
 {
   	include_once "ptb2_giai.php";
 		$a = $_POST ["txtA"];
 		$b = $_POST ["txtB"];
 		$c = $_POST ["txtC"];
+
+	$data = mysqli_connect("localhost","root","mysql","vinh");
+
+	if ($username == "" || $password == "" || $name == "" || $email == "")
+		{
+				echo "bạn vui lòng nhập đầy đủ thông tin";
+		}
+
+	else
+	{
+
+    	$sql = "INSERT INTO `PTB2`(`GetA`, `GetB`, `GetC`) VALUES ('$a','$b','$c')";
+   		mysqli_query($data,$sql);
+		echo "chúc mừng bạn đã đăng ký thành công";
+	}
+
+	
+
+	
+	
+
+
 	if (a!=o)
 	{
 		$ketqua = giaiptb2 ($a, $b, $c);
@@ -15,6 +37,8 @@ if ($_POST["btnGiai"])
 	{
 	 	 $ketqua = giaiptb1 ($b, $c);
 	}
+
+
 		
 }
 ?>
@@ -34,7 +58,7 @@ if ($_POST["btnGiai"])
 			<div class="col-md-9">
 		<h1 style="text-align:center;color:#5cb85c;">Giải Phương Trình Ax<sup>2</sup>+Bx+c=0 </h1>
 				<hr>
-				<form class="form-horizontal" action ="ptb2.php" method="POST">
+				<form action ="ptb2.php" method="POST">
 					<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">Nhập A </label>
 					<div class="col-sm-10">

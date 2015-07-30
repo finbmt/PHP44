@@ -1,5 +1,14 @@
 <?php
 	include_once 'database.php';
+	if($_GET["MaNguoiDung"])
+	{
+		$MaNguoiDung = $_GET["MaNguoiDung"];
+		$sql = "SELECT * FROM `NguoiDung` WHERE `MaNguoiDung` = '$MaNguoiDung'";
+		$result = mysqli_query($db, $sql);
+		$row = $result->fetch_array();
+		mysqli_close($db);
+	}
+
 	if($_POST["btnSave"])
 	{
 		//b1 lấy giá trị
@@ -8,7 +17,11 @@
 		$MatKhau = $_POST["MatKhau"];
 		$HoTen = $_POST["HoTen"];
 
-		$sql = "INSERT INTO `NguoiDung`(`TenTruyCap`, `MatKhau`, `HoTen`) VALUES ('$TenTruyCap','$MatKhau','$HoTen')";
+		$sql = "UPDATE `NguoiDung` SET 
+						`TenTruyCap`='$TenTruyCap',
+						`MatKhau`='$MatKhau',
+						`HoTen`='$HoTen' 
+						WHERE `MaNguoiDung`='$MaNguoiDung'";
 		$result = mysqli_query($db, $sql);
 		mysqli_close($db);
 
@@ -59,31 +72,38 @@
 			
 			<!-- nội dung-->
 			<div class="col-md-9">
-				<h1>Thêm người dùng</h1>
+				<h1>Sửa người dùng</h1>
 				<hr>
-				<form class="form-horizontal" action="form_nguoidung.php" method="POST">
+				<form class="form-horizontal" action="update_nguoidung.php" method="POST">
 				  <div class="form-group">
 					<label class="col-sm-2 control-label">Mã Người dùng</label>
 					<div class="col-sm-10">
-					  <input type="text" class="form-control" name="MaNguoiDung" placeholder="Mã Người Dùng">
+					  <input type="text" class="form-control"
+					   value="<?php echo $row['MaNguoiDung'];?>" placeholder="Mã Người Dùng">
+					   <input type="hidden"
+					   class="form-control" name="MaNguoiDung"
+					   value="<?php echo $row['MaNguoiDung'];?>" placeholder="Mã Người Dùng">
 					</div>
 				  </div>
 				  <div class="form-group">
 					<label class="col-sm-2 control-label">Tên Truy Cập</label>
 					<div class="col-sm-10">
-					  <input type="text" class="form-control" name="TenTruyCap" placeholder="Tên Truy Cập">
+					  <input type="text" class="form-control" name="TenTruyCap"
+					   value="<?php echo $row['TenTruyCap'];?>" placeholder="Tên Truy Cập">
 					</div>
 				  </div>
 				  <div class="form-group">
 					<label for="inputPassword3" class="col-sm-2 control-label">Mật khẩu</label>
 					<div class="col-sm-10">
-					  <input type="password" class="form-control" name="MatKhau" id="inputPassword3" placeholder="Mật khẩu">
+					  <input type="password" class="form-control" name="MatKhau" 
+					   value="<?php echo $row['MatKhau'];?>" placeholder="Mật khẩu">
 					</div>
 				  </div>
 				  <div class="form-group">
 					<label class="col-sm-2 control-label">Họ Tên</label>
 					<div class="col-sm-10">
-					  <input type="text" class="form-control" name="HoTen" placeholder="Họ Tên">
+					  <input type="text" class="form-control" name="HoTen"
+					   value="<?php echo $row['HoTen'];?>" placeholder="Họ Tên">
 					</div>
 				  </div>
 				  <hr>

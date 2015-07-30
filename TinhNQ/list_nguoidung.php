@@ -3,13 +3,8 @@
 	$sql = "SELECT * FROM NguoiDung";
 	$result = mysqli_query($db, $sql);
 	mysqli_close($db);
-	//while($row = $result->fetch_array())
-	//{
-	//	echo $row['TenTruyCap']. '<br/>';
-	//}
-
 	
-	//mysqli_close($db);
+	$confirm = " return confirm('Bạn có chắc muốn xóa người dùng này không?');";
 ?>
 <!DOCTYPE html>
 <html>
@@ -79,12 +74,12 @@
 							echo '<td>'.$row['MatKhau'].'</td>';
 							echo '<td>'.$row['HoTen'].'</td>';
 							echo '<td>';
-							echo '<button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Sửa">
+							echo '<a href="update_nguoidung.php?MaNguoiDung='.$row['MaNguoiDung'].'" type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Sửa">
 									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-								</button>';
-							echo '<button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa">
+								</a> ';
+							echo '<a href="delete_nguoidung.php?MaNguoiDung='.$row['MaNguoiDung'].'" type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa" onclick="'.$confirm.'">
 									<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-								</button>';
+								</a>';
 							echo '</td>';
 							echo '</tr>';
 						}

@@ -1,24 +1,32 @@
 <?php
-if (!defined('PATH_SITE')) exit('No direct script access allowed');
+if (!defined('PATH_SYSTEM')) exit('No direct script access allowed');
 
-class NguoiDung_Controller 
+class Nguoidung_Controller extends INET_Controller
 {
-	function index()
+	function indexAction()
+	{
+		$this->helper->load("String");
+
+		$data = array();
+		$data['title'] = viet_hoa("day la title");
+		$data['content'] = "day la content";
+
+		$this->view->load("NguoiDungList", $data);
+		$this->view->show();
+	}
+
+	function addAction()
+	{
+		$this->helper->load("String");
+		echo viet_hoa("toi la tinh nq");
+	}
+
+	function editAction()
 	{
 		
 	}
 
-	function add()
-	{
-		
-	}
-
-	function edit()
-	{
-		
-	}
-
-	function delete()
+	function deleteAction()
 	{
 		
 	}

@@ -1,12 +1,10 @@
 <?php
 if (!defined('PATH_SITE')) exit('No direct script access allowed');
 
-class Error_Controller 
+class INET_Model
 {
-	function index()
-	{
-		
-	}
+	protected $table = null;
+	
 }
 
 ?>

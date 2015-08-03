@@ -5,11 +5,8 @@
 	define("DB_PASSWORD", "mysql");
 	define("DB_DATABASE", "webshopping");
 
-	//CONFIG ĐƯỜNG DẪN VÀ URL
-	$path = dirname(dirname(__FILE__));
-	define("PATH_SITE", $path);
+	//CONFIG ĐƯỜNG DẪN
 	define("MAIN_URL", "http://php43.com/TinhNQ/");
 
-	define("CONTROLLER_DEFAULT", "index");
-	define("ACTION_DEFAULT", "index");
+	
 ?>

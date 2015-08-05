@@ -4,6 +4,7 @@
 	define("ACTION_DEFAULT", "Index");
 	define("PATH_ADMIN_CONTROLLER", PATH_SYSTEM . "/admin/controller/");
 	define("PATH_ADMIN_VIEW", PATH_SYSTEM . "/admin/view/");
+	define("PATH_ADMIN_MODEL", PATH_SYSTEM . "/admin/model/");
 
 	include_once PATH_SYSTEM . "/config/config.php";
 

@@ -3,6 +3,7 @@ if (!defined('PATH_SYSTEM')) exit('No direct script access allowed');
 
 class Nguoidung_Controller extends INET_Controller
 {
+	// hàm hiển thi màn hình danh sách
 	function indexAction($data = array())
 	{
 		// load model nguoi dung
@@ -15,37 +16,66 @@ class Nguoidung_Controller extends INET_Controller
 		$this->view->show();
 	}
 
-	function addAction()
+	function formAction($data = array(), $isEdit = false)
 	{
+		if ($isEdit) {
+			$data['text'] = 'Sửa';
+			$data['type'] = 'update';
+		}
+		else
+		{
+			$data['text'] = 'Thêm mới';
+		}
+
 		$data['message'] = "add";
-		$this->view->load("NguoiDungAdd", $data);
+		$this->view->load("NguoiDungForm", $data);
 		$this->view->show();
 	}
 
-	function doAddAction()
+	function doSaveAction()
 	{
-		$this->model->load("Nguoidung");
-		$nguoidung = new Nguoidung_Model();
+		// kiem tra nguoi co click vao nut save hay k
+		if ($_POST['btnSave']) {
+			$this->model->load("Nguoidung");
+			$nguoidung = new Nguoidung_Model();
+			$data['TenTruyCap'] = $_POST['TenTruyCap'];
+			$data['MatKhau'] = $_POST['MatKhau'];
+			$data['HoTen'] = $_POST['HoTen'];
 
-		$data['TenTruyCap'] = $_POST['TenTruyCap'];
-		$data['MatKhau'] = $_POST['MatKhau'];
-		$data['HoTen'] = $_POST['HoTen'];
-		$nguoidung->insert($data);
+			//$message = $this->check_empty($data);
 
-		$data['message'] = "them moi nguoi dung thanh cong";
-		$this->indexAction($data);
+			if ($_POST['type'] == 'update') {
+				$data['MaNguoiDung'] = $_POST['MaNguoiDung'];
+				$nguoidung->update($data);
+				$data['message'] = "sửa người dùng thành công";
+			}
+			else
+			{
+				$nguoidung->insert($data);
+				$data['message'] = "thêm mới người dùng thành công";
+			}
+			$this->indexAction($data);
+		} 
+		else
+		{
+			$this->redirect("c=nguoidung");
+		}
 	}
 
 	function editAction()
 	{
 		$this->model->load("Nguoidung");
 		$nguoidung = new Nguoidung_Model();
-
-		$data['TenTruyCap'] = 'user';
-		$data['MatKhau'] = 'user pass';
-		$data['HoTen'] = 'ten user';
-		$data['MaNguoiDung'] = '1';
-		$nguoidung->update($data);
+		if($_GET["MaNguoiDung"])
+		{
+			$MaNguoiDung = $_GET["MaNguoiDung"];
+			$data['item'] = $nguoidung->get_by_id($MaNguoiDung);
+			$this->formAction($data, true);
+		}
+		else
+		{
+			$this->formAction();
+		}
 	}
 
 	function deleteAction()
@@ -59,11 +89,11 @@ class Nguoidung_Controller extends INET_Controller
 			$this->model->load("Nguoidung");
 			$nguoidung = new Nguoidung_Model();
 			$nguoidung->delete($MaNguoiDung);
-			$data['message'] = "xóa thành công";
+			$data['message'] = "xóa người dùng thành công";
 		}
 		else
 		{
-			$data['message'] = "khong ton tai ma nguoi dung";
+			$data['message'] = "không tồn tại người dùng";
 		}
 
 		$this->indexAction($data);

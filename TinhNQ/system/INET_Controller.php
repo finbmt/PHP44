@@ -18,5 +18,26 @@ class INET_Controller
 		include_once PATH_SYSTEM . '/system/INET_View.php';
 		$this->view = new INET_View();
 	}
+
+	public function redirect($extra)
+	{
+		// di chuyen ve man hinh list
+		$host  = $_SERVER['HTTP_HOST'];
+		$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+		header("Location: http://$host$uri/admin.php?$extra");
+	}
+
+	// kiểm tra giá trị có tồn tại hay không
+	public function check_empty($items)
+	{
+		$messages = array();
+		foreach ($items as $key => $value) {
+			if (empty($value)) {
+				$messages[] = $key; 
+			}
+		}
+
+		return $messages;
+	}
 }
 ?>

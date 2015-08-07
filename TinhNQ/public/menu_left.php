@@ -1,25 +1,26 @@
 <div class="list-group">
 	<a href="#" class="list-group-item active">
 		<span class="glyphicon glyphicon-heart-empty"></span>
-		Menu trai
+		Bảng điều khiển
 	</a>
-	<a href="list_nguoidung.php" class="list-group-item">
+	<a href="admin.php?c=nguoidung" class="list-group-item">
 		<span class="glyphicon glyphicon-circle-arrow-right"></span>
-		Quan ly nguoi dung
+		Quản lý người dùng
 	</a>
-	<a href="#" class="list-group-item">
+	<a href="admin.php?c=nhacungcap" class="list-group-item">
 		<span class="glyphicon glyphicon-circle-arrow-right"></span>
-		<span class="badge">14</span>
-		Quần áo nữ
+		Quản lý nhà cung cấp
 	</a>
-	<a href="#" class="list-group-item">
+	<a href="admin.php?c=loaihang" class="list-group-item">
 		<span class="glyphicon glyphicon-circle-arrow-right"></span>
-		<span class="badge">14</span>
-		Phụ kiện
+		Quản lý loại hàng
 	</a>
-	<a href="#" class="list-group-item">
+	<a href="admin.php?c=hanghoa" class="list-group-item">
 		<span class="glyphicon glyphicon-circle-arrow-right"></span>
-		<span class="badge">14</span>
-		Quần áo trẻ em
+		Quản lý hàng hóa
+	</a>
+	<a href="admin.php?c=donhang" class="list-group-item">
+		<span class="glyphicon glyphicon-circle-arrow-right"></span>
+		Quản lý đơn hàng
 	</a>
 </div>

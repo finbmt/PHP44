@@ -10,6 +10,13 @@ class Nguoidung_Model extends INET_Model
 		return $data;
 	}
 
+	function get_by_id($MaNguoiDung)
+	{
+		$sql = "SELECT * FROM NguoiDung WHERE `MaNguoiDung` = '$MaNguoiDung'";
+		$data = $this->select($sql);
+		return $data[0];
+	}
+
 	function insert($data = array())
 	{
 		$sql = "INSERT INTO `NguoiDung`(`TenTruyCap`, `MatKhau`, `HoTen`) 

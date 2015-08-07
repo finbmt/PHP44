@@ -3,10 +3,15 @@
 <h1>Quản lý người dùng</h1>
 <hr>
 <p>
-	<?=$message;?>
+
+	<?php 
+		if ($message) {
+			echo "<span class='label label-warning'>". $message . "</span>";
+		}
+	?>
 </p>
 <p class="text-right">
-	<a href="admin.php?c=nguoidung&a=add" class="btn btn-success ">
+	<a href="admin.php?c=nguoidung&a=form" class="btn btn-success ">
 		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		Thêm mới
 	</a>
@@ -28,7 +33,7 @@
 				<td><?=$value['MatKhau']?></td>
 				<td><?=$value['HoTen']?></td>
 				<td>
-					<a href="update_nguoidung.php?MaNguoiDung=<?=$value['MaNguoiDung']?>" type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Sửa">
+					<a href="admin.php?c=nguoidung&a=edit&MaNguoiDung=<?=$value['MaNguoiDung']?>" type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Sửa">
 						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 					</a>
 					<a href="admin.php?c=nguoidung&a=delete&MaNguoiDung=<?=$value['MaNguoiDung']?>" type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa" onclick="'.$confirm.'">
@@ -51,7 +56,7 @@
   <button type="button" class="btn btn-default">3</button>
 </div>
 <div class="text-right">
-	<a href="admin.php?c=nguoidung&a=add" class="btn btn-success ">
+	<a href="admin.php?c=nguoidung&a=form" class="btn btn-success ">
 		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		Thêm mới
 	</a>

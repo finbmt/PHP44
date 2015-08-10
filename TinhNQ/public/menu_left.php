@@ -15,7 +15,7 @@
 		<span class="glyphicon glyphicon-circle-arrow-right"></span>
 		Quản lý loại hàng
 	</a>
-	<a href="admin.php?c=hanghoa" class="list-group-item">
+	<a href="admin.php?c=dmhang" class="list-group-item">
 		<span class="glyphicon glyphicon-circle-arrow-right"></span>
 		Quản lý hàng hóa
 	</a>

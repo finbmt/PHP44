@@ -2,7 +2,7 @@
 
 <h1><?= $text;?> Hàng Hóa</h1>
 <hr>
-<form class="form-horizontal" action="admin.php?c=dmhang&a=doSave" method="POST">
+<form class="form-horizontal" action="admin.php?c=dmhang&a=doSave" method="POST" enctype="multipart/form-data">
 	<?php if (isset($type)) { ?>
 	<div class="form-group">
 		<label class="col-sm-2 control-label">Mã Hàng hóa</label>
@@ -59,15 +59,29 @@
   <div class="form-group">
 	<label class="col-sm-2 control-label">Loại Hàng</label>
 	<div class="col-sm-10">
-	  <input type="text" class="form-control" name="MaLoaiHang" required placeholder="Loại Hàng"
-	   value="<?= $item['MaLoaiHang'];?>" >
+	   <select class="form-control" name="MaLoaiHang" required>
+			<option value="">Chọn...</option>
+			<?php if($list_loaihang) {
+			foreach ($list_loaihang as $value) :?>
+				<?php
+					$selected = "";
+					if ($value['MaLoaiHang'] == $item['MaLoaiHang']) {
+						$selected = "selected";
+					}
+				?>
+				<option value="<?=$value['MaLoaiHang']?>" <?=$selected?>><?=$value['TenLoaiHang']?></option>
+			<?php endforeach?>
+			<?php }?>
+	   </select>
 	</div>
   </div>
   <div class="form-group">
 	<label class="col-sm-2 control-label">Hình Ảnh</label>
 	<div class="col-sm-10">
-	  <input type="text" class="form-control" name="HinhAnh" required placeholder="Hình Ảnh"
-	   value="<?= $item['HinhAnh'];?>" >
+	   <input type="file" id="HinhUpload" class="form-control" name="HinhUpload">
+	   <br>
+	   <img id="imgTag" src=""/>
+	   <input type="hidden" class="form-control" name="HinhAnh" value="<?= $item['HinhAnh'];?>" >
 	</div>
   </div>
    <div class="form-group">
@@ -84,5 +98,4 @@
 	</div>
   </div>
 </form>
-
 <?php include_once PATH_SYSTEM. '/public/admin_footer.php';?>

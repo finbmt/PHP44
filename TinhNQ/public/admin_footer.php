@@ -30,11 +30,19 @@
   </div>
 </div>
 
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="public/js/jquery.min.js"></script>
+<script src="public/js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('#HinhUpload').on('change', function(){
+		// get file and pull attributes
+		img = document.getElementById("imgTag");
+		  fileinput = this;
+		  if (img && fileinput)
+		    img.src = fileinput.files[0].getAsDataURL();
+	});
 });
 </script>
 </body>

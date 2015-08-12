@@ -30,6 +30,10 @@ class Dmhang_Controller extends INET_Controller
 		$ncc = new Nhacungcap_Model();
 		$data['list_ncc'] = $ncc->get_list();
 
+		$this->model->load("Loaihang");
+		$loaiHang = new Loaihang_Model();
+		$data['list_loaihang'] = $loaiHang->get_list();
+
 		$data['message'] = "add";
 		$this->view->load("DmHangForm", $data);
 		$this->view->show();
@@ -39,6 +43,17 @@ class Dmhang_Controller extends INET_Controller
 	{
 		// kiem tra nguoi dung co click vao nut save hay k
 		if ($_POST['btnSave']) {
+
+			$hinhanh = $_POST['HinhAnh'];
+			if ($_FILES['HinhUpload']['name']) {
+				if ($_FILES['HinhUpload']['error'] != 0) {
+					die("file update bi lỗi");
+				}
+
+				$hinhanh = $_FILES['HinhUpload']['name'];
+				move_uploaded_file($_FILES['HinhUpload']['tmp_name'] , PATH_SYSTEM . "/public/img/" . $hinhanh);
+			}
+
 			$this->model->load("Dmhang");
 			$Dmhang = new Dmhang_Model();
 
@@ -47,7 +62,7 @@ class Dmhang_Controller extends INET_Controller
 			$data['DonGia'] = $_POST['DonGia'];
 			$data['MaNhaCungCap'] = $_POST['MaNhaCungCap'];
 			$data['MaLoaiHang'] = $_POST['MaLoaiHang'];
-			$data['HinhAnh'] = $_POST['HinhAnh'];
+			$data['HinhAnh'] = $hinhanh;
 			$data['MoTa'] = $_POST['MoTa'];
 
 			//$message = $this->check_empty($data);

@@ -1,11 +1,11 @@
 <?php
 if (!defined('PATH_SYSTEM')) exit('No direct script access allowed');
 
-class Nhacungcap_Model extends INET_Model
+class Loaihang_Model extends INET_Model
 {
 	function get_list()
 	{
-		$sql = "SELECT * from NhaCungCap";
+		$sql = "SELECT * from LoaiHang";
 		$data = $this->select($sql);
 		return $data;
 	}

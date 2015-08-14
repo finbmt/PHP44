@@ -3,14 +3,25 @@ if (!defined('PATH_SYSTEM')) exit('No direct script access allowed');
 
 class Dmhang_Model extends INET_Model
 {
-	function get_list()
+	function get_list($limit = "")
 	{
 		$sql = "SELECT hang.*, ncc.TenNhaCungCap, lh.TenLoaiHang
 		 FROM `DMHang` as hang inner join nhacungcap as ncc 
 		 on hang.MaNhaCungCap = ncc.MaNhaCungCap 
-		 inner join loaihang as lh on hang.MaLoaiHang = lh.MaLoaiHang";
+		 inner join loaihang as lh on hang.MaLoaiHang = lh.MaLoaiHang " . $limit;
 		$data = $this->select($sql);
 		return $data;
+	}
+
+	public function get_total()
+	{
+		$sql = "SELECT count(1) as count
+		 FROM `DMHang` as hang inner join nhacungcap as ncc 
+		 on hang.MaNhaCungCap = ncc.MaNhaCungCap 
+		 inner join loaihang as lh on hang.MaLoaiHang = lh.MaLoaiHang";
+
+		$total = $this->count($sql);
+		return $total;
 	}
 
 	function get_by_id($MaHang)

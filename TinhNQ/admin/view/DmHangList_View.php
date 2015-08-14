@@ -54,10 +54,10 @@
 		?>
 	</tbody>
 </table>
+Tổng số : <?= $total_hang;?><br>
+
 <div class="btn-group" role="group" aria-label="...">
-  <button type="button" class="btn btn-default">1</button>
-  <button type="button" class="btn btn-default">2</button>
-  <button type="button" class="btn btn-default">3</button>
+	<?=$paging_link?>
 </div>
 <div class="text-right">
 	<a href="admin.php?c=dmhang&a=form" class="btn btn-success ">

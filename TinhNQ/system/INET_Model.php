@@ -54,6 +54,7 @@ class INET_Model
 	{
 		// mo ket noi
 		$this->connect();
+		$data = array();
 		// thực thi
 		$result = mysqli_query($this->db, $sql);
 		if($result)
@@ -63,12 +64,30 @@ class INET_Model
 			{
 				$data[] = $row;
 			}
-			return $data;
 		}
 		// dong ket noi
 		$this->close();
 
-		return null;
+		return $data;
+	}
+
+	public function count($sql)
+	{
+		// mo ket noi
+		$this->connect();
+		// thực thi
+		$result = mysqli_query($this->db, $sql);
+
+		$count = 0;
+		if($result)
+		{
+			$row = $result->fetch_array();
+			$count = $row['count'];
+		}
+		// dong ket noi
+		$this->close();
+
+		return $count;
 	}
 }
 ?>

@@ -35,15 +35,21 @@
 <script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
-
-    $('#HinhUpload').on('change', function(){
-		// get file and pull attributes
-		img = document.getElementById("imgTag");
-		  fileinput = this;
-		  if (img && fileinput)
-		    img.src = fileinput.files[0].getAsDataURL();
-	});
 });
+
+function readURL(input) {
+    var url = input.value;
+    var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+    if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#imgTag').attr('src', e.target.result).width(200).height(150);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 </script>
 </body>
 </html>

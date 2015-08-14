@@ -6,11 +6,30 @@ class Dmhang_Controller extends INET_Controller
 	// hàm hiển thi màn hình danh sách
 	function indexAction($data = array())
 	{
+		// kiem tra gia tri trang hien tai
+		if (isset($_GET['p'])) {
+			$this->current_page = $_GET['p'];
+		}
+		else
+		{
+			$this->current_page = 1;
+		}
+		
 		// load model nguoi dung
 		$this->model->load("Dmhang");
 		$dmhang = new Dmhang_Model();
-		
-		$data['list_hang'] =  $dmhang->get_list();
+
+		// tong so record trong csdl
+		$total = $dmhang->get_total();
+		// call hàm xử lý paging
+		$this->paging($total, "c=dmhang");
+
+		// get danh sach du lieu
+		$data['paging_link'] = $this->paging_link;
+		$data['total_hang'] = $total;
+		$data['list_hang'] = $dmhang->get_list($this->limit);
+
+
 		$this->view->load("DmHangList", $data);
 		$this->view->show();
 	}
@@ -24,6 +43,10 @@ class Dmhang_Controller extends INET_Controller
 		else
 		{
 			$data['text'] = 'Thêm mới';
+		}
+
+		if (!$data['item']['HinhAnh']) {
+			$data['item']['HinhAnh'] = "default.png";
 		}
 
 		$this->model->load("Nhacungcap");

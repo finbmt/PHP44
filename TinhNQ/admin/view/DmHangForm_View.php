@@ -78,9 +78,9 @@
   <div class="form-group">
 	<label class="col-sm-2 control-label">Hình Ảnh</label>
 	<div class="col-sm-10">
-	   <input type="file" id="HinhUpload" class="form-control" name="HinhUpload">
+	   <input type="file" id="HinhUpload" class="form-control" onchange="readURL(this)" name="HinhUpload">
 	   <br>
-	   <img id="imgTag" src=""/>
+	   <img id="imgTag" width="200" height="150" src="public/img/<?= $item['HinhAnh'];?>"/>
 	   <input type="hidden" class="form-control" name="HinhAnh" value="<?= $item['HinhAnh'];?>" >
 	</div>
   </div>

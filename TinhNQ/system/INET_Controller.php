@@ -7,6 +7,12 @@ class INET_Controller
 	protected $model = null;
 	protected $view = null;
 
+	//paging
+	protected $number_record_page = 5;
+	protected $current_page = 0;
+	protected $limit = "";
+	protected $paging_link = "";
+
 	public function __construct()
 	{
 		include_once PATH_SYSTEM . '/system/INET_Helper.php';
@@ -38,6 +44,59 @@ class INET_Controller
 		}
 
 		return $messages;
+	}
+
+	protected function paging($total, $url)
+	{
+		$text_a_tag = "<a class='btn btn-default' href='admin.php?". $url . "&p=";
+		$number_page = 1;
+		if ($this->current_page < 0) {
+			$this->current_page = 1;
+		}
+		if ($total > $this->number_record_page && $this->number_record_page > 0) {
+			$number_page = ceil($total/$this->number_record_page);
+
+			if ($this->current_page > $number_page) {
+				$this->current_page = $number_page;
+			}
+
+			$prev = "";
+			$next = "";
+			if ($this->current_page == 1) {
+				// hien thi next
+				// khong hien prev
+				$next = $this->current_page + 1;
+				$next = "$text_a_tag$next'>Next</a> ";
+			} elseif ($this->current_page == $number_page) {
+				// khong hien next
+				// hien thi prev
+				$prev = $this->current_page - 1;
+				$prev = "$text_a_tag$prev'>Prev</a> ";
+			} else {
+				// hien thi ca 2
+				$next = $this->current_page + 1;
+				$next = "$text_a_tag$next'>Next</a> ";
+				$prev = $this->current_page - 1;
+				$prev = "$text_a_tag$prev'>Prev</a> ";
+
+			}
+
+			$this->paging_link = $prev . $this->paging_link;
+			for ($i=1; $i <= $number_page; $i++) {
+				if ($this->current_page == $i) {
+					$this->paging_link .= "<span class='btn btn-warning'>$i </span>";
+				}
+				else
+				{
+					$this->paging_link .= "$text_a_tag$i'>$i</a> ";
+				}
+			}
+
+			$this->paging_link =  $this->paging_link . $next;
+
+			$start = ($this->current_page - 1) * $this->number_record_page;
+			$this->limit = " limit $start, $this->number_record_page";
+		}
 	}
 }
 ?>

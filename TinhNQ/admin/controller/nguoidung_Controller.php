@@ -3,9 +3,12 @@ if (!defined('PATH_SYSTEM')) exit('No direct script access allowed');
 
 class Nguoidung_Controller extends INET_Controller
 {
+
 	// hàm hiển thi màn hình danh sách
 	function indexAction($data = array())
 	{
+		$this->needLogin();
+
 		// load model nguoi dung
 		$this->model->load("Nguoidung");
 		$nguoidung = new Nguoidung_Model();
@@ -18,6 +21,8 @@ class Nguoidung_Controller extends INET_Controller
 
 	function formAction($data = array(), $isEdit = false)
 	{
+		$this->needLogin();
+
 		if ($isEdit) {
 			$data['text'] = 'Sửa';
 			$data['type'] = 'update';
@@ -34,6 +39,8 @@ class Nguoidung_Controller extends INET_Controller
 
 	function doSaveAction()
 	{
+		$this->needLogin();
+
 		// kiem tra nguoi co click vao nut save hay k
 		if ($_POST['btnSave']) {
 			$this->model->load("Nguoidung");
@@ -64,6 +71,8 @@ class Nguoidung_Controller extends INET_Controller
 
 	function editAction()
 	{
+		$this->needLogin();
+
 		$this->model->load("Nguoidung");
 		$nguoidung = new Nguoidung_Model();
 		if($_GET["MaNguoiDung"])
@@ -80,6 +89,8 @@ class Nguoidung_Controller extends INET_Controller
 
 	function deleteAction()
 	{
+		$this->needLogin();
+		
 		$data['message'] = "";
 		$MaNguoiDung = $_GET['MaNguoiDung']; 
 

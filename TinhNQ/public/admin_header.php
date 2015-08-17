@@ -19,14 +19,12 @@
 			<li class="active"><a href="#">Trang chủ</a></li>
 			<li><a href="#">Sản phẩm</a></li>
 			<li><a href="#">Liên hệ</a></li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
 			<li>
-				<!-- Button trigger modal -->
-				<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-				  Đăng nhập
-				</button>
-			</li>
+				<?php if ($HoTen) {
+						echo "<span class='label label-sucess'>". $HoTen . "</span>";
+					}
+				?> 
+				<a href="#">Đăng xuất</a></li>
 		</ul>
 	</div>
 	<div class="container-fluid">

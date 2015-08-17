@@ -6,6 +6,8 @@
 	define("PATH_ADMIN_VIEW", PATH_SYSTEM . "/admin/view/");
 	define("PATH_ADMIN_MODEL", PATH_SYSTEM . "/admin/model/");
 
+	session_start();
+
 	include_once PATH_SYSTEM . "/config/config.php";
 
 	$controller = isset($_GET['c']) ? $_GET['c'] : CONTROLLER_DEFAULT;

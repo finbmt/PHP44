@@ -13,6 +13,8 @@ class INET_Controller
 	protected $limit = "";
 	protected $paging_link = "";
 
+	protected $user = array();
+
 	public function __construct()
 	{
 		include_once PATH_SYSTEM . '/system/INET_Helper.php';
@@ -25,6 +27,20 @@ class INET_Controller
 		$this->view = new INET_View();
 	}
 
+	public function needLogin($need_login = true)
+	{
+		if ($need_login) {
+			if (!isset($_SESSION['user_login'])) {
+				$_SESSION['user_login'] = null; 
+				$this->redirect("c=index&a=login");
+			}
+			else
+			{
+				$this->user = $_SESSION['user_login'];
+			}
+		}
+		
+	}
 	public function redirect($extra)
 	{
 		// di chuyen ve man hinh list

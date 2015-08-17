@@ -39,5 +39,12 @@ class Nguoidung_Model extends INET_Model
 		$sql = "DELETE FROM `NguoiDung` WHERE `MaNguoiDung` = '$MaNguoiDung'";
 		return $this->execute($sql);
 	}
+
+	function login($TenTruyCap, $MatKhau)
+	{
+		$sql = "SELECT * FROM NguoiDung WHERE `TenTruyCap` = '$TenTruyCap' AND MatKhau = '$MatKhau'";
+		$data = $this->select($sql);
+		return $data[0];
+	}
 }
 ?>

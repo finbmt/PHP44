@@ -6,6 +6,8 @@ class Dmhang_Controller extends INET_Controller
 	// hàm hiển thi màn hình danh sách
 	function indexAction($data = array())
 	{
+		$this->needLogin();
+
 		// kiem tra gia tri trang hien tai
 		if (isset($_GET['p'])) {
 			$this->current_page = $_GET['p'];
@@ -36,6 +38,8 @@ class Dmhang_Controller extends INET_Controller
 
 	function formAction($data = array(), $isEdit = false)
 	{
+		$this->needLogin();
+
 		if ($isEdit) {
 			$data['text'] = 'Sửa';
 			$data['type'] = 'update';
@@ -64,6 +68,8 @@ class Dmhang_Controller extends INET_Controller
 
 	function doSaveAction()
 	{
+		$this->needLogin();
+
 		// kiem tra nguoi dung co click vao nut save hay k
 		if ($_POST['btnSave']) {
 
@@ -110,6 +116,8 @@ class Dmhang_Controller extends INET_Controller
 
 	function editAction()
 	{
+		$this->needLogin();
+
 		$this->model->load("Dmhang");
 		$Dmhang = new Dmhang_Model();
 		if($_GET["MaHang"])
@@ -126,6 +134,8 @@ class Dmhang_Controller extends INET_Controller
 
 	function deleteAction()
 	{
+		$this->needLogin();
+		
 		$data['message'] = "";
 		$MaHang = $_GET['MaHang']; 
 

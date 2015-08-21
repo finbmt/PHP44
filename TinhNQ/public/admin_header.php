@@ -20,11 +20,12 @@
 			<li><a href="#">Sản phẩm</a></li>
 			<li><a href="#">Liên hệ</a></li>
 			<li>
-				<?php if ($HoTen) {
-						echo "<span class='label label-sucess'>". $HoTen . "</span>";
+				<a href="<?php echo URL_ADMIN_PAGE . "?c=index&a=doLogout";?>" onclick="return confirm('bạn có thực sự muốn đăng xuất không ?');">
+				<?php if (isset($_SESSION['user_login'])) {
+						echo "<span class='label label-info'>". $_SESSION['user_login']['HoTen'] . "</span>";
 					}
-				?> 
-				<a href="#">Đăng xuất</a></li>
+				?> Đăng xuất</a>
+			</li>
 		</ul>
 	</div>
 	<div class="container-fluid">

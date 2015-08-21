@@ -29,6 +29,7 @@ class Dmhang_Controller extends INET_Controller
 		// get danh sach du lieu
 		$data['paging_link'] = $this->paging_link;
 		$data['total_hang'] = $total;
+
 		$data['list_hang'] = $dmhang->get_list($this->limit);
 
 

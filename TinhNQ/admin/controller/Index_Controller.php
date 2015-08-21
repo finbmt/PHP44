@@ -31,14 +31,17 @@ class Index_Controller extends INET_Controller
 
 			$this->model->load("Nguoidung");
 			$nguoidung = new Nguoidung_Model();
-		
+			
+			//ma hoa 
+			$MatKhau = $this->encryptIt($MatKhau);
+			
 			$user =  $nguoidung->login($TenTruyCap, $MatKhau);
 			if ($user) {
 				$_SESSION['user_login'] = $user;
 
 				var_dump($_SESSION['user_login']);
 				// login đúng
-				//$this->redirect("c=index&a=index");
+				$this->redirect("c=index&a=index");
 			}
 			else
 			{
@@ -54,6 +57,17 @@ class Index_Controller extends INET_Controller
 			$this->loginAction($data);
 		}
 		
+	}
+
+	function doLogoutAction()
+	{
+		$this->needLogin();
+		
+		if (isset($_SESSION['user_login']))
+		{
+			$_SESSION['user_login'] = null;
+			$this->redirect("a=login");
+		}
 	}
 }
 

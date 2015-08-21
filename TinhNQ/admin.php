@@ -5,7 +5,11 @@
 	define("PATH_ADMIN_CONTROLLER", PATH_SYSTEM . "/admin/controller/");
 	define("PATH_ADMIN_VIEW", PATH_SYSTEM . "/admin/view/");
 	define("PATH_ADMIN_MODEL", PATH_SYSTEM . "/admin/model/");
-
+	define("KEY_MD5", "123456");
+	
+	$host  = $_SERVER['HTTP_HOST'];
+	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+	define("URL_ADMIN_PAGE", "http://$host$uri/admin.php");
 	session_start();
 
 	include_once PATH_SYSTEM . "/config/config.php";

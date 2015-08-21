@@ -48,7 +48,14 @@ class INET_Controller
 		$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 		header("Location: http://$host$uri/admin.php?$extra");
 	}
-
+	
+	public function getUrlAdmin()
+	{
+		$host  = $_SERVER['HTTP_HOST'];
+		$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+		return "http://$host$uri/admin.php";
+	}
+	
 	// kiểm tra giá trị có tồn tại hay không
 	public function check_empty($items)
 	{
@@ -114,5 +121,14 @@ class INET_Controller
 			$this->limit = " limit $start, $this->number_record_page";
 		}
 	}
+	
+	// ham ma hoa
+	function encryptIt($q) {
+		// key cua minh
+		$cryptKey  = '123';
+		$qEncoded      = base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5(KEY_MD5),
+							$q, MCRYPT_MODE_CBC, md5( md5(KEY_MD5) ) ) );
+		return( $qEncoded );
+}
 }
 ?>

@@ -46,9 +46,10 @@ class Nguoidung_Controller extends INET_Controller
 			$this->model->load("Nguoidung");
 			$nguoidung = new Nguoidung_Model();
 			$data['TenTruyCap'] = $_POST['TenTruyCap'];
-			$data['MatKhau'] = $_POST['MatKhau'];
 			$data['HoTen'] = $_POST['HoTen'];
-
+			// ma hoa mat khau
+			$data['MatKhau'] = $this->encryptIt($_POST['MatKhau']);
+			
 			//$message = $this->check_empty($data);
 
 			if ($_POST['type'] == 'update') {

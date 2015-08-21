@@ -9,6 +9,7 @@ class Dmhang_Model extends INET_Model
 		 FROM `DMHang` as hang inner join nhacungcap as ncc 
 		 on hang.MaNhaCungCap = ncc.MaNhaCungCap 
 		 inner join loaihang as lh on hang.MaLoaiHang = lh.MaLoaiHang " . $limit;
+		 //var_dump($sql);
 		$data = $this->select($sql);
 		return $data;
 	}

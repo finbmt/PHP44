@@ -10,7 +10,7 @@
 	// chuỗi tên class : Nguoidung_Controller
 	$controller_class = ucfirst($controller) . "_Controller";
 	// chuỗi file controller
-	$file = PATH_ADMIN_CONTROLLER . $controller_class . ".php";
+	$file = PATH_USER_CONTROLLER . $controller_class . ".php";
 
 	// kiểm tra file tồn tại
 	if (!file_exists($file))
@@ -36,5 +36,4 @@
 
 	// thực thi
 	$objController->{$action_method}();
-
 ?>

@@ -59,5 +59,16 @@ class Dmhang_Model extends INET_Model
 		$sql = "DELETE FROM `DMHang` WHERE `MaHang` = '$MaHang'";
 		return $this->execute($sql);
 	}
+	
+	function get_list_new($limit = 6)
+	{
+		$sql = "SELECT hang.*, ncc.TenNhaCungCap, lh.TenLoaiHang FROM `DMHang` as hang 
+		inner join nhacungcap as ncc on hang.MaNhaCungCap = ncc.MaNhaCungCap 
+		inner join loaihang as lh on hang.MaLoaiHang = lh.MaLoaiHang 
+		order by hang.MaHang DESC limit " . $limit;
+
+		$data = $this->select($sql);
+		return $data;
+	}
 }
 ?>
